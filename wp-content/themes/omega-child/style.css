@@ -1,0 +1,124 @@
+/*
+Theme Name: Omega Child
+Theme URI: http://blog.aseom.net/1365
+Author: ASeom Han
+Template: omega
+
+Omega WordPress theme, Copyright (C) 2013 themehall.com
+Omega WordPress theme is licensed under the GPL.
+Modified by ASeom Han.
+*/
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, 'Nanum Barun Gothic', sans-serif;
+}
+.site-container {
+    -webkit-text-stroke: 0.25px;
+    text-rendering: optimizeLegibility;
+}
+
+#header .site-title {
+    margin-bottom: 10px;
+}
+
+#header .site-description {
+	font-family: sans-serif;
+	font-size: 19px;
+}
+
+.wrap .content {
+    width: 630px;
+}
+
+.wrap .sidebar-primary {
+    width: 270px;
+}
+
+.entry {
+	margin-bottom: 70px;
+}
+
+.entry-wrap h1,
+.entry-wrap h2,
+.entry-wrap h3,
+.entry-wrap h4,
+.entry-wrap h5,
+.entry-wrap h6 {
+	line-height: 1.4;
+}
+
+.entry-wrap img {
+    margin-bottom: 0;
+}
+
+.entry-wrap pre {
+    font-family: D2Coding, Menlo, Consolas, monospace, sans-serif;
+    padding: 10px 14px;
+    background-color: #F5F5F5;
+    white-space: pre-wrap; /* Modern */
+    word-wrap: break-word; /* IE 5.5 */
+    overflow: hidden;
+}
+
+@media only screen and (min-width: 720px) {
+    .entry-header {
+        position: relative;
+    }
+    .entry-header:before {
+        content: "";
+        position: absolute;
+        top: 4px;
+        left: -20px;
+        width: 6px;
+        height: 92%; /* Legacy */
+        height: -webkit-calc(100% - 6px);
+        height: calc(100% - 6px);
+        background: #DDD;
+    }
+}
+
+.entry-title {
+    font-size: 34px;
+}
+
+.entry-content a,
+.entry-summary a {
+    color: #007ea8;
+    text-shadow: 0 0 3px rgba(165, 165, 165, 0.4);
+    text-decoration: none;
+}
+
+.entry-content a:hover,
+.entry-content a:focus,
+.entry-summary a:hover,
+.entry-summary a:focus {
+    color: #7dc5de;
+    text-decoration: none;
+}
+
+.sidebar-primary h4 {
+    font-size: 24px;
+}
+
+.sidebar-primary li {
+    color: #808080;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	word-wrap: normal;
+}
+.sidebar-primary a {
+    color: #808080;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.sidebar-primary a:hover,
+.sidebar-primary a:focus {
+    color: #008CBA;
+}
+
+@media only screen and (max-width: 1023px) {
+    .wrap .content,
+    .wrap .sidebar-primary {
+        width: 100%;
+    }
+}

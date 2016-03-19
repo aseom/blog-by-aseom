@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+<meta http-equiv="Last-Modified" content="Sat, 19 Mar 2016 18:17:53 GMT">
+<meta charset="UTF-8">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<title>서버 백업을 위한 Batch 스크립트 &#8211; Blog by ASeom</title>
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content="WordPress 4.4.2 with StaticPress ver.0.4.4" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/blog.aseom.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.4.2"}};
+			!function(a,b,c){function d(a){var c,d=b.createElement("canvas"),e=d.getContext&&d.getContext("2d"),f=String.fromCharCode;return e&&e.fillText?(e.textBaseline="top",e.font="600 32px Arial","flag"===a?(e.fillText(f(55356,56806,55356,56826),0,0),d.toDataURL().length>3e3):"diversity"===a?(e.fillText(f(55356,57221),0,0),c=e.getImageData(16,16,1,1).data.toString(),e.fillText(f(55356,57221,55356,57343),0,0),c!==e.getImageData(16,16,1,1).data.toString()):("simple"===a?e.fillText(f(55357,56835),0,0):e.fillText(f(55356,57135),0,0),0!==e.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag"),unicode8:d("unicode8"),diversity:d("diversity")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag&&c.supports.unicode8&&c.supports.diversity||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='parent-style-css'  href="/wp-content/themes/omega/style.css?ver=4.4.2" type='text/css' media='all' />
+<link rel='stylesheet' id='omega-style-css'  href="/wp-content/themes/omega-child/style.css?ver=4.4.2" type='text/css' media='all' />
+<link rel='https://api.w.org/' href="/wp-json/" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='‘Clien 10’ 앱을 오픈소스로 공개합니다.' href="/1321" />
+<link rel='next' title='Amazon, AWS 서울 리전 오픈' href="/1343" />
+<link rel="canonical" href="http://blog.aseom.net/1333" />
+<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblog.aseom.net%2F1333" />
+<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblog.aseom.net%2F1333&#038;format=xml" />
+
+<link rel="stylesheet" type="text/css" href="/wp-content/fonts/nanumbarungothic/nbg.css" />	<!--[if lt IE 9]>
+	<script src="/wp-content/themes/omega/js/html5.js" type="text/javascript"></script>
+	<![endif]-->
+
+<style type="text/css" id="custom-css"></style>
+</head>
+<body class="wordpress ltr child-theme y2016 m03 d20 h03 sunday logged-out singular singular-post singular-post-1333" dir="ltr" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+<div class="site-container">
+	<nav id="navigation" class="nav-primary" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">	
+	<div class="wrap"><a href="#" id="menu-icon" class="menu-icon"><span></span></a><ul id="menu-%eb%a9%94%eb%89%b4" class="menu omega-nav-menu menu-primary"><li id="menu-item-1420" class="menu-item menu-item-type-taxonomy menu-item-object-category first menu-item-1420"><a href="/category/design">design</a></li>
+<li id="menu-item-1421" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-1421"><a href="/category/develop">develop</a></li>
+<li id="menu-item-1422" class="menu-item menu-item-type-taxonomy menu-item-object-category last menu-item-1422"><a href="/category/others">others</a></li>
+</ul></div></nav><!-- .nav-primary --><header id="header" class="site-header" role="banner" itemscope="itemscope" itemtype="http://schema.org/WPHeader"><div class="wrap"><div class="title-area"><h2 class="site-title" itemprop="headline"><a href="" title="Blog by ASeom" rel="home">Blog by ASeom</a></h2><h3 class="site-description"><span>취미로 코딩하는 컴덕의 블로그</span></h3></div></div></header><!-- .site-header -->	<div class="site-inner">
+		<div class="wrap"><main class="content" id="content" role="main" itemprop="mainEntityOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
+	<article id="post-1333" class="entry post publish author-aseom-han post-1333 format-standard category-develop" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost"><div class="entry-wrap">
+	<header class="entry-header">	<h1 class="entry-title" itemprop="headline">서버 백업을 위한 Batch 스크립트</h1>
+<div class="entry-meta">
+	<time class="entry-time" datetime="2016-01-07T15:41:51+09:00" itemprop="datePublished" title="목요일, 1월 7, 2016, 3:41 오후">2016년 1월 7일</time>
+	<span class="entry-author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">by <a href="/author/aseom-han" title="ASeom Han 작성" rel="author" class="url fn n" itemprop="url"><span itemprop="name">ASeom Han</span></a></span>	
+		</div><!-- .entry-meta --></header><!-- .entry-header -->	
+		<div class="entry-content" itemprop="articleBody">
+	<p>필자의 컴퓨터에는 마인크래프트 Spigot 서버와 IIS 웹서버가 구동되고 있다.</p>
+<p>하루에도 몇번씩 커뮤니티 사이트에 랜섬웨어 피해가 올라오는 이 혼돈의 상황 속에서,<br />
+마인크래프트 월드 파일과 블로그 글들이 날아가는 건 상상조차 하기 싫은 일.<br />
+무조건 백업해야 한다.</p>
+<p>외장하드든 나스든 랜섬에는 얄짤없으므로, 선택할 수 있는 건 클라우드 서비스였고,<br />
+매달 100GB를 $1.99에 제공하는 구글 드라이브를 백업용으로 쓰기로 했다.<br />
+만약 암호화된 파일이 동기화 되어버려도 30일 안에는 이전 버전 복구 가능.</p>
+<h3>백업 스크립트 (윈도우)</h3>
+<p><img class="size-full wp-image-1339 alignnone" src="/wp-content/uploads/2016/01/Cap-2016-01-07-16-00-01-411.png" alt="Cap 2016-01-07 16-00-01-411" width="1154" height="692" /></p>
+<p>매일 수동 백업은 귀찮은 일이므로, 스크립트로 처리하는 것이 편하다.<br />
+커맨드라인을 지원하는 7-Zip으로 백업할 폴더를 통째 압축하도록 하는데,<br />
+한가지 문제가 발생. 서버 구동 중에 이렇게 하면 엑세스 오류가 난다.</p>
+<p><span id="more-1333"></span></p>
+<p>다른 프로세스(Spigot 서버)가 사용 중인 파일에 7-Zip이 접근하지 못하는 문제인데,<br />
+윈도우에 포함된 <a href="https://ko.wikipedia.org/wiki/%EC%84%80%EB%8F%84_%EB%B3%B5%EC%82%AC%EB%B3%B8">볼륨 스냅샷 서비스(VSS)</a>를 이용해서 볼륨의 스냅샷을 생성한 다음 백업을 진행하면 문제가 발생하지 않는다.<br />
+자세한 지식은 없어서 구글링해본 결과<br />
+VSS를 이용한 폴더 복사를 지원하는 <a href="http://candera.github.io/hobocopy/">HoboCopy</a>라는 유틸을 발견했다.</p>
+<pre>hobocopy /full /r /skipdenied &lt;원본 폴더&gt; &lt;복사할 폴더&gt;</pre>
+<ul>
+<li>&#8216;/r&#8217; 스위치가 있어야 폴더 내의 폴더까지 복사됨.</li>
+</ul>
+<p>복사가 끝나면, 7-Zip으로 압축해서 백업 디렉토리에 저장하면 되겠다.</p>
+<pre>7z a -t7z &lt;생성할 압축파일.7z&gt; &lt;압축할 폴더&gt;</pre>
+<ul>
+<li>&#8216;-sdel&#8217; 스위치를 넣으면 압축 후 폴더를 삭제한다.</li>
+</ul>
+<p>이제 MySQL 데이터베이스 덤프. (7z 형식으로 압축)</p>
+<pre>mysqldump -u&lt;유저&gt; -p&lt;패스워드&gt; --databases &lt;DB명&gt; | 7z a -t7z -siSQL_Dump.sql &lt;생성할 압축파일.7z&gt;</pre>
+<p>배치파일 작성 관련 설명은&#8230; 생략<br />
+태스크 스케줄러 등록 관련 설명도&#8230; 생략</p>
+<p><span style="color: #808080;"><del>제일 중요한 거잖아</del></span></p>
+	
+		</div>
+	<footer class="entry-footer"><div class="entry-meta">
+	<span class="entry-terms category" itemprop="articleSection">Posted in: <a href="/category/develop" rel="tag">develop</a></span>			
+</div></footer></div></article></main><!-- .content -->
+			
+	<aside id="sidebar" class="sidebar sidebar-primary widget-area" role="complementary" itemscope itemtype="http://schema.org/WPSideBar">	
+				<section id="search-2" class="widget widget-1 even widget-first widget_search"><div class="widget-wrap"><form role="search" method="get" class="search-form" action="/">	
+	<input type="search" class="search-field" placeholder="Search ..." value="" name="s" title="Search for:">	<input type="submit" class="search-submit" value="Search">
+</form></div></section>		<section id="recent-posts-2" class="widget widget-2 odd widget_recent_entries"><div class="widget-wrap">		<h4 class="widget-title">최근 글</h4>		<ul>
+					<li>
+				<a href="/1403">PHP 파일 업로드 권한 문제 고치기</a>
+						</li>
+					<li>
+				<a href="/1393">Hyper-V 환경으로 서버 구동</a>
+						</li>
+					<li>
+				<a href="/1373">CSS-Only Animation</a>
+						</li>
+					<li>
+				<a href="/1369">AquaSnap, 에어로스냅을 대신할 유틸리티</a>
+						</li>
+					<li>
+				<a href="/1365">블로그에 나눔바른고딕 적용</a>
+						</li>
+					<li>
+				<a href="/1351">No &#8216;Access-Control-Allow-Origin&#8217; 해결</a>
+						</li>
+					<li>
+				<a href="/1343">Amazon, AWS 서울 리전 오픈</a>
+						</li>
+					<li>
+				<a href="/1333">서버 백업을 위한 Batch 스크립트</a>
+						</li>
+					<li>
+				<a href="/1321">‘Clien 10’ 앱을 오픈소스로 공개합니다.</a>
+						</li>
+					<li>
+				<a href="/1312">&#8216;Clien 10&#8217; 앱 업데이트에 대해&#8230;</a>
+						</li>
+				</ul>
+		</div></section>		<section id="categories-2" class="widget widget-3 even widget_categories"><div class="widget-wrap"><h4 class="widget-title">카테고리</h4>		<ul>
+	<li class="cat-item cat-item-5"><a href="/category/design" >design</a> (15)
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/develop" >develop</a> (13)
+</li>
+	<li class="cat-item cat-item-6"><a href="/category/others" >others</a> (57)
+</li>
+		</ul>
+</div></section><section id="archives-2" class="widget widget-4 odd widget_archive"><div class="widget-wrap"><h4 class="widget-title">글 목록</h4>		<ul>
+			<li><a href="/date/2016/01">2016년 1월</a>&nbsp;(14)</li>
+	<li><a href="/date/2015/12">2015년 12월</a>&nbsp;(2)</li>
+	<li><a href="/date/2015/07">2015년 7월</a>&nbsp;(2)</li>
+	<li><a href="/date/2014/12">2014년 12월</a>&nbsp;(1)</li>
+	<li><a href="/date/2014/11">2014년 11월</a>&nbsp;(6)</li>
+	<li><a href="/date/2014/10">2014년 10월</a>&nbsp;(22)</li>
+	<li><a href="/date/2014/09">2014년 9월</a>&nbsp;(29)</li>
+	<li><a href="/date/2014/08">2014년 8월</a>&nbsp;(9)</li>
+		</ul>
+		</div></section><section id="meta-2" class="widget widget-5 even widget-last widget_meta"><div class="widget-wrap"><h4 class="widget-title">그 밖의 기능</h4>			<ul>
+						<li><a href="/wp-login.php">로그인</a></li>
+			<li><a href="/feed">글 <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="/comments/feed">댓글 <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://wordpress.org/" title="이 블로그는 가장 앞선 개인 발행 도구인 워드프레스로 운영됩니다.">WordPress.org</a></li>			</ul>
+			</div></section>		  	</aside><!-- .sidebar -->
+</div>	</div><!-- .site-inner -->
+	<footer id="footer" class="site-footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter"><div class="wrap"><div class="footer-content footer-insert"><p class="copyright">Copyright &#169; 2016 Blog by ASeom.</p>
+
+<p class="credit"><a class="child-link" href="/1365" title="Omega Child WordPress Theme">Omega Child</a> WordPress Theme by ASeom Han</p></div></div></footer><!-- .site-footer --></div><!-- .site-container -->
+<script type='text/javascript' src="/wp-includes/js/wp-embed.min.js?ver=4.4.2"></script>
+</body>
+</html>
